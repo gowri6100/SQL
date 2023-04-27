@@ -95,15 +95,6 @@ Syntax for changing the datatype
 ALTER TABLE forest_info MODIFY COLUMN state bigint;
 desc forest_info;
 
-
-
-
-
-
-
-
-
-
 select * from forestInfo;
 
 
@@ -113,6 +104,159 @@ ALTER TABLE forest_info RENAME COLUMN f_name TO forestName;
 ALTER TABLE forest_info MODIFY COLUMN state bigint;
 
 RENAME TABLE forest_info TO forestInfo;
+
+CREATE TABLE nation_info(nation_name varchar(10),total_population bigint,state_name varchar(10));
+ALTER TABLE nation_info ADD COLUMN nation_name int; 
+ALTER TABLE nation_info ADD COLUMN n_number  bigint;
+ALTER TABLE nation_info ADD COLUMN n_state varchar(10);
+ALTER TABLE nation_info DROP COLUMN nation_name ;
+ALTER TABLE nation_info RENAME COLUMN nation_name to nation;
+ALTER TABLE nation_info RENAME COLUMN total_population to totalPopulation;
+ALTER TABLE nation_info MODIFY COLUMN n_number varchar(10);
+ALTER TABLE nation_info MODIFY COLUMN n_state varchar (10);
+
+SELECT * FROM nation_info;
+desc nation_info;
+
+DDL:
+1)CREATE: 
+2)Alter : 
+3) Drop:
+4) Truncate:
+
+DML: (Data manipulation Language):
+1)INSERT: 
+
+select * from forestInfo;
+desc forest_info;
+ALTER TABLE forestInfo MODIFY COLUMN state varchar(20);
+INSERT INTO forest_info VALUES(1, 'Bandipur', 'Chamarajanagar', 20000);
+INSERT INTO forest_info (id,f_name,location,area) VALUES (2,'Nagarahole','Mysore',10002);
+INSERT INTO forest_info(id, location, pincode) VALUES(3,'Andhra',103);
+
+select * from forest_info;
+
+Truncate: 
+TRUNCATE TABLE forest_info;
+DROP DATABASE vandana;
+DROP DATABASE xwork;
+DROP DATABASE xworkz;
+
+
+select * from school_info;
+
+select * from school_info where f_name = 'COTTON' OR f_name = 'barli' or f_name = 'john' or f_name = 'shankar';
+
+IN:
+
+select * from school_info where f_name IN('COTTON','barli','john','shankar');
+
+NOT IN: 1-10 --- 3-10
+
+SELECT * FROM school_info where id not in(1,2);
+
+select * from school_info where f_name not in('COTTON','WHEET');
+
+between:
+SELECT * FROM school_info where id between 14 and 25;
+
+not between
+
+select * from school_info where id not between 2 and 6;
+select * from school_info where id not in (2,6);
+
+aggregate functions:
+1)count
+select count(*) as total_rows from school_info;
+
+select count(f_name) as names from school_info;
+
+sum:
+select sum(fee) as total_fee from school_info;
+select sum(fee) from school_info where id between 2 and 8;
+
+max:
+select max(fee) from school_info;
+min:
+select min(fee) from school_info;
+avg:
+select avg(fee) from school_info;
+
+
+order by:
+
+select * from village_info;
+
+select * from village_info order by id;
+select * from village_info order by id desc;
+
+distinct:
+select distinct(id) from village_info order by id;
+select distinct(f_name) from village_info order by id;
+
+LIKE:
+pattern matching:
+%:
+select * from village_info;
+
+select * from village_info where f_name like '%a';
+select * from village_info where f_name like 'a%a';
+
+INSTR:INstring:
+XWORKZ
+
+SELECT INSTR('XXWORKZR','X');
+
+SELECT INSTR(f_name,'a'), f_name from village_info;
+
+substr:
+XWORKZODCBANGALORE
+SELECT SUBSTR('XWORKZODCBANGALORE',2,5);
+SELECT SUBSTR('XWORKZODCBANGALORE',6,4);
+SELECT SUBSTR(f_name,3,5), f_name from village_info;
+SELECT * FROM village_info;
+CONSTRAINTS:
+1)Not null:
+
+CREATE TABLE cric_info(id int , c_name varchar(30), primary key(id,c_name));
+INSERT INTO cric_info values(1,'T20');
+INSERT INTO cric_info values(1,'Test');
+drop table cric_info;
+SELECT * FROM cric_info;
+
+unique:
+
+primary key:
+
+foreign key:
+
+CREATE TABLE bank_info(id int, b_name varchar(30), b_id int, primary key(b_id));
+select * from bank_info;
+INSERT INTO bank_info values(1,'sbi', 101);
+INSERT INTO bank_info values(2,'hdfc', 102);
+INSERT INTO bank_info values(3,'icici', 103);
+INSERT INTO bank_info values(4,'axis', 104);
+
+create table cust_info(id int, c_name varchar(20), b_id int, foreign key(b_id) references bank_info(b_id));
+
+select * from cust_info;
+
+insert into cust_info values(1,'Akshar', 103);
+insert into cust_info values(2,'Abhishek', 101);
+insert into cust_info values(3,'Sunil', 101);
+
+create table loan_info(id int, l_name varchar(30), b_name varchar(30) default 'sbi');
+insert into loan_info(id, l_name) values (1,'Croploan');
+insert into loan_info values (1,'Croploan','hdfc');
+
+select * from loan_info;
+
+create table loan_dup2 as select id,l_name from loan_info;
+select * from loan_dup2;
+
+
+
+
 
 
 

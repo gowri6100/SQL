@@ -19,7 +19,7 @@ ALTER TABLE school_info RENAME COLUMN poen to salaries;
 ALTER TABLE school_info MODIFY COLUMN nation varchar  (20);
 ALTER TABLE school_info MODIFY COLUMN teacher varchar (10);
 
-INSERT INTO school_info values (100,'adarsh vidyalaya','kalaburagi');
+
 
 
 CREATE TABLE college_info (id int,f_name varchar(10),location varchar(12));
@@ -45,7 +45,7 @@ INSERT INTO college_info values (120,'appa college','kalaburagi');
 
 CREATE TABLE city_info (id_no int,f_name varchar (10));
 
-SELECT *FROM city_info;
+SELECT *FROM city_info;forest_info
 desc city_info;
 
 ALTER TABLE city_info ADD COLUMN location varchar (23);
@@ -96,9 +96,19 @@ ALTER TABLE university_info RENAME COLUMN address to visit ;
 ALTER TABLE university_info RENAME COLUMN state to district;
 
 ALTER TABLE university_info MODIFY COLUMN branch varchar (12);
+
+
 ALTER TABLE university_info MODIFY COLUMN state varchar (12);
 INSERT INTO university_info VALUES (1234,'REVA UNIVERCITY','GADAGA'); 
 
+create table hostel_infor(id int(15),name varchar(20),address varchar(30));
+
+insert into hostel_infor values(1,"Gouri","Gulburga");
+select * from hostel_infor;
+insert into hostel_infor values(1,"Gouri","Gulburga");
+insert into hostel_infor values(2,"Ashwini","Bagalkot");
+
+delete from hostel_infor where id=1;
 
 
 
